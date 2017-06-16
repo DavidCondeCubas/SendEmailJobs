@@ -19,11 +19,11 @@ import org.apache.log4j.Logger;
  */
 public class ActivityLog {
     static Logger log = Logger.getLogger(ActivityLog.class.getName());
-    public static void log (String job_id,String rw_event_id,String recipients,Connection cn){
+    public static void log (String job_id,String rw_event_id,String recipients,String body,Connection cn){
         try{
         Statement st = cn.createStatement();
        
-        st.executeUpdate("insert into log(job_id,timestamp,rw_event_id,recipients) values('"+job_id+"',now(),'"+rw_event_id+"','"+recipients+"')");//add student id as well
+        st.executeUpdate("insert into log(job_id,timestamp,rw_event_id,recipients,message) values('"+job_id+"',now(),'"+rw_event_id+"','"+recipients+"','"+body+"')");//add student id as well
         
         }
         catch(SQLException ex) {

@@ -46,7 +46,7 @@ public class SendMail {
         try {
  for(Msg m:finallist){
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("norhanmhmd"));
+            message.setFrom(new InternetAddress(m.getSender()));
             // put here if reciepient is not empty, incase the parent doe snot have an email on renweb
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("nmohamed@eduwebgroup.com"));//m.getRecipient()));
             message.setSubject(m.getTitle());
@@ -63,7 +63,7 @@ public class SendMail {
            System.out.println("Sent message successfully....");
             Class.forName("org.postgresql.Driver");
             Connection cn = DriverManager.getConnection("jdbc:postgresql://192.168.1.3:5432/Maintenance_jobs?user=eduweb&password=Madrid2016");
-        ActivityLog.log(m.getJob_id(),m.getRw_event_id(),m.getRecipient(), cn);
+        ActivityLog.log(m.getJob_id(),m.getRw_event_id(),m.getRecipient(),m.getBody(), cn);
  }
         } catch (MessagingException e) {
             throw new RuntimeException(e);
