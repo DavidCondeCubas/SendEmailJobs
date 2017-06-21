@@ -10,6 +10,7 @@ import java.net.PasswordAuthentication;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -64,6 +65,8 @@ public class SendMail {
             Class.forName("org.postgresql.Driver");
             Connection cn = DriverManager.getConnection("jdbc:postgresql://192.168.1.3:5432/Maintenance_jobs?user=eduweb&password=Madrid2016");
         ActivityLog.log(m.getJob_id(),m.getRw_event_id(),m.getRecipient(),m.getBody(), cn);
+        Statement st = cn.createStatement();
+        st.executeUpdate("update jobs set lastrun = now() where id ="+m.getJob_id());
  }
         } catch (MessagingException e) {
             throw new RuntimeException(e);

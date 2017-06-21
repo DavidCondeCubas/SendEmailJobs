@@ -38,7 +38,7 @@ public class GetMsgs {
             if(Objects.equals(rs.getString("type"),"3"))
             {
             Msg m = new Msg();
-            if(rs.getTimestamp("lastrun")== null){
+            if(rs.getTimestamp("lastrun")== null){ 
                 m.setBody(rs.getString("message"));
                 m.setTitle(rs.getString("msgtitle"));
                  m.setType(rs.getString("setting"));
