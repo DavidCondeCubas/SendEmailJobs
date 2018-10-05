@@ -10,6 +10,7 @@ package sendemailjobs;
  * @author nmohamed
  */
 public class Msg {
+
     private String title;
     private String body;
     private String sender;
@@ -17,6 +18,17 @@ public class Msg {
     private String type;
     private String rw_event_id;
     private String job_id;
+
+    public Msg(){}
+    public Msg(String title, String body, String sender, String recip, String type, String rw_event_id, String job_id) {
+        this.title = title;
+        this.body = body;
+        this.sender = sender;
+        this.recipient = recip;
+        this.type = type;
+        this.rw_event_id = rw_event_id;
+        this.job_id = job_id;
+    }
 
     public String getRw_event_id() {
         return rw_event_id;
@@ -33,7 +45,6 @@ public class Msg {
     public void setJob_id(String job_id) {
         this.job_id = job_id;
     }
-           
 
     public String getType() {
         return type;
@@ -42,7 +53,7 @@ public class Msg {
     public void setType(String type) {
         this.type = type;
     }
-    
+
     public String getTitle() {
         return title;
     }
@@ -74,5 +85,5 @@ public class Msg {
     public void setRecipient(String recipient) {
         this.recipient = recipient;
     }
-    
+
 }
