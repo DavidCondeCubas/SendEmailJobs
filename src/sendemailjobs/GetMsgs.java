@@ -36,7 +36,7 @@ public class GetMsgs {
 
         String query = "select DisciplineID,DateofIncident,DescriptionOfIncident,History,reportedID,Sanction1,Sanction2,SanctionDate1,SanctionDate2,Violation,ReportedBy,ReviewedBy,Status,b.StudentID,Demerits,\"Level\",\"Type\",\n" +
 "       b.ClassID,b.CourseID,b.\"Name\",b.\"Section\",b.PersonID,b.LastName,b.FirstName,b.Email,b.Email2,studentFirstName,studentLastName,person.FirstName as reportedFirstName,person.LastName as reportedLastName\n" +
-" from person inner join\n" +
+" from person right join\n" +
 "(select DisciplineID,DateofIncident,DescriptionOfIncident,History,reportedID,Sanction1,Sanction2,SanctionDate1,SanctionDate2,Violation,ReportedBy,ReviewedBy,Status,a.StudentID,Demerits,\"Level\",\"Type\",\n" +
 "       a.ClassID,a.CourseID,a.\"Name\",a.\"Section\",a.PersonID,a.LastName,a.FirstName,a.Email,a.Email2,person.FirstName as studentFirstName,person.LastName as studentLastName\n" +
 "\n" +
