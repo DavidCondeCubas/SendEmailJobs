@@ -43,7 +43,7 @@ public class GetMsgs {
 " from (SELECT DisciplineID,DateofIncident,DescriptionOfIncident,History,Sanction1,Sanction2,SanctionDate1,SanctionDate2,Violation,ReportedBy,ReviewedBy,Status,Discipline.StaffID as reportedID,Discipline.StudentID,Demerits,\"Level\",\"Type\",\n" +
 "       Classes.ClassID,Classes.CourseID,Classes.\"Name\",Classes.\"Section\",Person.PersonID,Person.LastName,Person.FirstName,Person.Email,Person.Email2 FROM Discipline inner join roster on (Discipline.studentID = roster.StudentID) \n" +
 "                          inner join classes on roster.classID = classes.classID inner join person on classes.StaffID = person.PersonID\n" +
-"                          where (Discipline.DisciplineID > "+maxID_Discipline+") and classes.YearID in (select distinct DefaultYearID from Roster inner join classes on classes.ClassID = Roster.ClassID \n" +
+"                          where roster.Enrolled = 1 and (Discipline.DisciplineID > "+maxID_Discipline+") and classes.YearID in (select distinct DefaultYearID from Roster inner join classes on classes.ClassID = Roster.ClassID \n" +
 "                                   inner join Courses  on Courses.CourseID = Classes.CourseID \n" +
 "                                   inner join ConfigSchool  on ConfigSchool.SchoolCode = Courses.SchoolCode\n" +
 "                                   where Roster.StudentID = roster.StudentID) and \n" +
